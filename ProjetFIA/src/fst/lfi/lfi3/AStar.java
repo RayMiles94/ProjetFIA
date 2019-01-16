@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class AStar {
   
-	
+	// ok
 	public static void main(String args[]) {
 		int K=3,N=5;
 		List<Node> ouvert = new ArrayList<>();
