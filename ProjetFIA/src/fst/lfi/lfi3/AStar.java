@@ -23,6 +23,7 @@ public class AStar {
 		first.setH(0);
 		first.setG(0);
 		ouvert.add(first);
+		ferme.add(first);
 		solution="Solution: \n";
 		while(!goal_test(ouvert)) {
 			rechercher(ouvert,ferme); 
