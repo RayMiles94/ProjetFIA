@@ -11,12 +11,14 @@ public class AStar {
 	int K;
 	int N;
 	String solution="";
+	ArrayList<Node> ouvert;
+	ArrayList<Node> ferme;
 	public AStar(int k,int n) {
 
 		
 		int K=k,N=n;
-		ArrayList<Node> ouvert = new ArrayList<Node>();
-		ArrayList<Node> ferme = new ArrayList<Node>();
+		ouvert = new ArrayList<Node>();
+		ferme = new ArrayList<Node>();
 		Node first = new Node();
 		first.setEtat(new State("A",0,0,true,0,0));
 		first.setF(0);
