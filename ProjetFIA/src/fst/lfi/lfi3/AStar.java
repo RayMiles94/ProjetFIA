@@ -92,10 +92,10 @@ public class AStar {
 	}
 	
 	public void add(ArrayList<Node> ouvert,Node element) {
-		for(int i=0;i<ouvert.size();i++) {
+		/* for(int i=0;i<ouvert.size();i++) {
 			if (ouvert.get(i).getEtat().isempty())
 				ouvert.add(element);
-		}
+		} */ ouvert.add(element);
 	}
 	public void remove(ArrayList<Node> ferme ,Node element) {
 		for (int i=0;i<ferme.size();i++) {
