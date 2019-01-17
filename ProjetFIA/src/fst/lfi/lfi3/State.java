@@ -5,7 +5,7 @@ public class State {
 	int number_M_gauche,number_C_gauche;
 	int number_M_droite,number_C_droite;
 	boolean b;
-	
+	int f,h,g;
 	public String getLabel() {
 		return label;
 	}
@@ -60,7 +60,7 @@ public class State {
 	public void setG(int g) {
 		this.g = g;
 	}
-	int f,h,g;
+	
 	
 	public State() {
 		
