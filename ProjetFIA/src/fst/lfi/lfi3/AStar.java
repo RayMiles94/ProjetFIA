@@ -1,3 +1,8 @@
+/* 
+ * Projet FIA : Les missionnaires et les cannibales
+ * auteurs: jebri raouf , ben yahia haythem
+ * 
+ */
 package fst.lfi.lfi3;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,13 +15,6 @@ public class AStar {
 		List<Node> ferme = new ArrayList<>();
 		Node e1=new Node("A",5,5,true,0,0);
 		ouvert.add(e1);	
-	
-		
-		
-		
-		
-		
-		
 	}
 	//il faut verifier que e1 n'appartient pas a la liste des ferme sinon on la supprime
 	public void chercher_ouvert(Node e1,List<Node> liste_ouverte,List<Node> liste_ferme,int k,int n) {

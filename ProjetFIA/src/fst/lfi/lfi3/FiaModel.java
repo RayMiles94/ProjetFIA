@@ -1,3 +1,8 @@
+/* 
+ * Projet FIA : Les missionnaires et les cannibales
+ * auteurs: jebri raouf , ben yahia haythem
+ * 
+ */
 package fst.lfi.lfi3;
 
 public class FiaModel {
