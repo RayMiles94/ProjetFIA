@@ -28,14 +28,12 @@ public class FiaView extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		
-	}
 
 	/**
 	 * Create the frame.
 	 */
 	public FiaView() {
+		setTitle("Les missionnaires et les cannibales");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 593, 400);
 		contentPane = new JPanel();
@@ -94,5 +92,10 @@ public class FiaView extends JFrame {
 	
 	public void SET_SOLUTION(String solution){
 		res.setText(solution);
+	}
+
+	public void setSoltion(String arg0) {
+		res.setText(arg0);
+		
 	}
 }

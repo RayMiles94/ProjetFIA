@@ -6,46 +6,15 @@
 package fst.lfi.lfi3;
 import java.util.*;
 class Node {
-	  
-	String label;
-	int number_M_gauche,number_C_gauche;
-	int number_M_droite,number_C_droite;
-	boolean b;
-	public String getLabel() {
-		return label;
+	public State Etat;
+	public int f;
+	public int g;
+	public int h;
+	public State getEtat() {
+		return Etat;
 	}
-	public void setLabel(String label) {
-		this.label = label;
-	}
-	public int getNumber_M_gauche() {
-		return number_M_gauche;
-	}
-	public void setNumber_M_gauche(int number_M_gauche) {
-		this.number_M_gauche = number_M_gauche;
-	}
-	public int getNumber_C_gauche() {
-		return number_C_gauche;
-	}
-	public void setNumber_C_gauche(int number_C_gauche) {
-		this.number_C_gauche = number_C_gauche;
-	}
-	public int getNumber_M_droite() {
-		return number_M_droite;
-	}
-	public void setNumber_M_droite(int number_M_droite) {
-		this.number_M_droite = number_M_droite;
-	}
-	public int getNumber_C_droite() {
-		return number_C_droite;
-	}
-	public void setNumber_C_droite(int number_C_droite) {
-		this.number_C_droite = number_C_droite;
-	}
-	public boolean isB() {
-		return b;
-	}
-	public void setB(boolean b) {
-		this.b = b;
+	public void setEtat(State etat) {
+		Etat = etat;
 	}
 	public int getF() {
 		return f;
@@ -53,31 +22,17 @@ class Node {
 	public void setF(int f) {
 		this.f = f;
 	}
-	public int getH() {
-		return h;
-	}
-	public void setH(int h) {
-		this.h = h;
-	}
 	public int getG() {
 		return g;
 	}
 	public void setG(int g) {
 		this.g = g;
 	}
-	int f,h,g;
-	
-	public Node() {
+	public int getH() {
+		return h;
+	}
+	public void setH(int h) {
+		this.h = h;
+	}
 		
-	}
-	public Node(String name, int mis_gauch,int can_gauch,boolean b,int mis_droite,int can_droite) {
-		this.label = name;
-		this.number_M_gauche=mis_gauch;
-		this.number_C_gauche=can_gauch;
-		this.number_M_droite=mis_droite;
-		this.number_C_droite=can_droite;
-	}
-	
-	
-	
 }

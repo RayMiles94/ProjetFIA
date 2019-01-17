@@ -27,7 +27,7 @@ public class Fiacontroller {
 			if(model.Valid_K(view.getN(),view.getK())){
 				model.setN(view.getN());
 				model.setK(view.getK());
-				JOptionPane.showMessageDialog(null, "OK");
+				view.setSoltion(model.SOLUTION(view.getN(),view.getK()));
 			}
 			else {
 				JOptionPane.showMessageDialog(null, "k est strictement inférieur a N");

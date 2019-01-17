@@ -16,8 +16,10 @@ public class FiaModel {
 		return k<n? true : false;
 	}
 	
-	public String SOLUTION(){
-		return null;
+	public String SOLUTION(int i, int j){
+		AStar sol = new AStar(i,j);
+		
+		return sol.getsoltion();
 		
 	}
 	

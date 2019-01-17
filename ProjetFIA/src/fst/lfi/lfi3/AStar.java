@@ -8,55 +8,163 @@ import java.util.ArrayList;
 import java.util.List;
 public class AStar {
   
-	// ok
-	public static void main(String args[]) {
-		int K=3,N=5;
-		List<Node> ouvert = new ArrayList<>();
-		List<Node> ferme = new ArrayList<>();
-		Node e1=new Node("A",5,5,true,0,0);
-		ouvert.add(e1);	
+	int K;
+	int N;
+	String solution="";
+	public AStar(int k,int n) {
+
+		
+		int K=k,N=n;
+		ArrayList<Node> ouvert = new ArrayList<Node>();
+		ArrayList<Node> ferme = new ArrayList<Node>();
+		Node first = new Node();
+		first.setEtat(new State("A",0,0,true,0,0));
+		first.setF(0);
+		first.setH(0);
+		first.setG(0);
+		ouvert.add(first);
+		solution="Solution: \n";
+		while(!goal_test(ouvert)) {
+			rechercher(ouvert,ferme); 
+			solution += "Ouvert:";
+			for(int i=0;i<ouvert.size();i++){
+				solution += "f:"+ouvert.get(i).getF()+" h:"+ouvert.get(i).getH()+" G:"+ouvert.get(i).getG();
+			}
+			solution +="\n";
+			solution += "ferme:\n";
+			for(int j=0;j<ferme.size();j++){
+				solution += "f:"+ferme.get(j).getF()+" h:"+ferme.get(j).getH()+" G:"+ferme.get(j).getG();
+			}
+		}
 	}
-	//il faut verifier que e1 n'appartient pas a la liste des ferme sinon on la supprime
-	public void chercher_ouvert(Node e1,List<Node> liste_ouverte,List<Node> liste_ferme,int k,int n) {
-		for (int charge=1;charge<=k;charge++) {
-			for (int miss=k;miss<=0;miss--) {
-				//verifier si on peut deplacer missionnaires et cannibales : miss et charge-miss
-				if (verifier_possibilite(e1,miss,charge-miss)){
-					Node aux = new Node();
-					//reste a verifier le noeud aux...
-					aux.setLabel(e1.getLabel());//incremente le nom de label ancien ...
-					aux.setNumber_C_gauche(e1.getNumber_C_gauche()-(charge-miss));
-					aux.setNumber_M_gauche(e1.getNumber_M_gauche()-miss);
-					aux.setNumber_C_droite(e1.getNumber_C_droite()+miss);
-					aux.setNumber_M_droite(e1.getNumber_M_droite()+miss);
-					aux.setB(false);
-					liste_ouverte.add(aux);
-					
+	public boolean goal_test(ArrayList<Node> ouvert) {
+		for (int i=0;i<ouvert.size();i++) {
+			try {
+			State etat = ouvert.get(i).getEtat();
+				if ((etat.getNumber_M_droite()==this.N)&&(etat.getNumber_C_droite()==this.N)) return true;
+			}
+			catch(NullPointerException e){
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+	
+	//fonction pour selectionner le minimum apartir de ouvert voir les possibilité à partir de ce noeud et ensuite les mettre dans ouvert
+	public void rechercher(ArrayList<Node> ouvert,ArrayList<Node> ferme) {
+		int indice = chercher_min(ouvert);
+			proceder(ouvert,ferme,indice);
+				
+	}
+	
+
+
+
+	public void proceder(ArrayList<Node> ouvert,ArrayList<Node> ferme,int indice) {
+		
+		if(!ouvert.isEmpty()){
+			Node noeud = ouvert.get(indice);//etat don't la fonction f est minimum a partir de l'ensebme Ouvert
+			Node courant = noeud;
+			//cominer tout les possibilites possible d'un deplacement et ensuite verifier si c'est possible
+			
+			//il faut remplacer la condition dans la boucle !!!!
+			//mettre la valeur de K!!!!
+			
+			for (int charge=1;charge<=3;charge++) { //remplacer 3 par la valeurs de K
+				for (int miss=3;miss<=0;miss--) {	//remplacer 3 par la valeur de K ici
+					if (verifier_possibilite(noeud,miss,charge-miss)) {
+					//ajouter le noued a ouvert	
+					add(ouvert,noeud);
+					}
+				
 				}
+				
+				
+			}
+			remove(ferme,courant);
+			//supprimer le noeud de ferme 
+		}
+		else {
+			System.out.println("ouvert est vide");
+			System.exit(1);
 		}
 		
 	}
-	//supprimer le noeud de l'ensemble ouvert apres calculer ses noeud suivants
-		liste_ouverte.remove(e1);
-		liste_ferme.add(e1);
-		
-		
-		
-}
-	public boolean verifier_possibilite(Node e,int Nmiss,int Ncann) {
-		if (Ncann>Nmiss) return false;
-		int Mdroite = e.number_M_droite + Nmiss;
-		int Cdroite = e.number_C_droite + Ncann;
-		int Mgauche = e.number_M_gauche - Nmiss;
-		int Cgauche = e.number_C_droite - Ncann;
-		if (Cdroite>Mdroite) return false;
-		if (Cgauche>Mgauche) return false;
-		return true;
+	
+	public void add(ArrayList<Node> ouvert,Node element) {
+		for(int i=0;i<ouvert.size();i++) {
+			if (ouvert.get(i).getEtat().isempty())
+				ouvert.add(element);
+		}
+	}
+	public void remove(ArrayList<Node> ferme ,Node element) {
+		for (int i=0;i<ferme.size();i++) {
+			if (ferme.get(i)==element)
+				decaler(i,ferme);
+		}
 	}
 	
+	//reste a finir decaler
+	public void decaler(int pos,ArrayList<Node> ferme) {
+		for (int i =pos;i<ferme.size()-1;i++) {
+			ferme.add(ferme.get(i+1));
+		}
+		State e = new State("empty", 0, 0,true, 0, 0);
+		ferme.get(ferme.size()).setEtat(e);
+	}
+	
+	public boolean verifier_possibilite(Node e,int Nmiss,int Ncann) {
+		if (Ncann>Nmiss) return false;
+		
+		State s = e.getEtat();
+		if (s.isB()==true) {
+		int Mdroite = s.getNumber_M_droite() + Nmiss;
+		int Cdroite = s.getNumber_C_droite() + Ncann;
+		int Mgauche = s.getNumber_M_gauche() - Nmiss;
+		int Cgauche = s.getNumber_C_gauche() - Ncann;
+		if (Cdroite>Mdroite) return false;
+		if (Cgauche>Mgauche) return false;
+		Node aux = new Node();
+		aux.setG(Nmiss+Ncann);//la fonction G est la charge du bateau
+		aux.setF(e.getG()+1);
+		aux.setH(e.getG()+1+Nmiss+Ncann);
+		State et = new State();
+		
+		et.setNumber_C_droite(Cdroite);
+		et.setNumber_M_droite(Mdroite);
+		et.setNumber_C_gauche(Cgauche);
+		et.setNumber_M_gauche(Mgauche);
+
+		aux.setEtat(et);
+		e=aux;
+		}
+			else {
+				int Mdroite = s.getNumber_M_droite() - Nmiss;
+				int Cdroite = s.getNumber_C_droite() - Ncann;
+				int Mgauche = s.getNumber_M_gauche() + Nmiss;
+				int Cgauche = s.getNumber_C_gauche() + Ncann;
+				if (Cdroite>Mdroite) return false;
+				if (Cgauche>Mgauche) return false;
+				Node aux = new Node();
+				aux.setG(Nmiss+Ncann);//la fonction G est la charge du bateau
+				aux.setF(e.getG()+1);
+				aux.setH(e.getG()+1+Nmiss+Ncann);
+				State et = new State();
+				
+				et.setNumber_C_droite(Cdroite);
+				et.setNumber_M_droite(Mdroite);
+				et.setNumber_C_gauche(Cgauche);
+				et.setNumber_M_gauche(Mgauche);
+
+				aux.setEtat(et);
+				e=aux;
+			}
+
+		return true;
+	}
   /*
-	private static void deplacer_droite(int com,Node tab[],int pos,int k) {
-		Node e = new Node();
+	private static void deplacer_droite(int com,State tab[],int pos,int k) {
+		State e = new State();
 		if ()
 		e.number_M_gauche = tab[i].number_M_gauche - com;
 		e.number_C_gauche = tab[i].number_C_gauche -(k- com);
@@ -67,4 +175,27 @@ public class AStar {
 		
 	}
 	*/
+	
+	private int chercher_min(ArrayList<Node> ouvert) {
+		int min=0;
+		try {
+		    min = ouvert.get(1).getF();
+			for (int i=1;i<ouvert.size();i++) {
+				int f = ouvert.get(i).getF();
+				if(f<min) min = f;
+				
+			}
+		}
+		catch(IndexOutOfBoundsException e){
+			
+		}
+		
+		
+		return min;
+	}
+	
+	
+	
+	public String getsoltion()
+	{   return this.solution;  }
 }
