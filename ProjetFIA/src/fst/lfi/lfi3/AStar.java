@@ -28,12 +28,15 @@ public class AStar {
 		while(!goal_test(ouvert)) {
 			rechercher(ouvert,ferme); 
 			solution += "Ouvert:";
-			for(int i=0;i<ouvert.size();i++){
+			int i=0;
+			while(ouvert.size()>i){
 				solution += "f:"+ouvert.get(i).getF()+" h:"+ouvert.get(i).getH()+" G:"+ouvert.get(i).getG();
+				i++;
 			}
 			solution +="\n";
 			solution += "ferme:\n";
-			for(int j=0;j<ferme.size();j++){
+			int j=0;
+			while(ferme.size()>j){
 				solution += "f:"+ferme.get(j).getF()+" h:"+ferme.get(j).getH()+" G:"+ferme.get(j).getG();
 			}
 		}
