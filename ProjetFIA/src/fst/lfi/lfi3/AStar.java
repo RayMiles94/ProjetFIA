@@ -25,7 +25,6 @@ public class AStar {
 		first.setH(0);
 		first.setG(0);
 		ouvert.add(first);
-		ferme.add(first);
 		solution="Solution: \n";
 		while(!goal_test(ouvert)) {
 			rechercher(ouvert,ferme); 
@@ -59,7 +58,7 @@ public class AStar {
 	//fonction pour selectionner le minimum apartir de ouvert voir les possibilité à partir de ce noeud et ensuite les mettre dans ouvert
 	public void rechercher(ArrayList<Node> ouvert,ArrayList<Node> ferme) {
 		int indice = chercher_min(ouvert);
-			proceder(ouvert,ferme,indice);
+	    proceder(ouvert,ferme,indice);
 				
 	}
 	
@@ -107,6 +106,7 @@ public class AStar {
 		for (int i=0;i<ferme.size();i++) {
 			if (ferme.get(i)==element)
 				decaler(i,ferme);
+			    ferme.remove(element);
 		}
 	}
 	
