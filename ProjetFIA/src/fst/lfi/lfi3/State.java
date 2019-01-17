@@ -6,6 +6,10 @@ public class State {
 	int number_M_droite,number_C_droite;
 	boolean b;
 	int f,h,g;
+	
+    public State() {
+		
+	}
 	public String getLabel() {
 		return label;
 	}
@@ -62,9 +66,7 @@ public class State {
 	}
 	
 	
-	public State() {
-		
-	}
+	
 	public State(String name, int mis_gauch,int can_gauch,boolean b,int mis_droite,int can_droite) {
 		this.label = name;
 		this.number_M_gauche=mis_gauch;
