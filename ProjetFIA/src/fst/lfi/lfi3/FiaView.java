@@ -63,7 +63,7 @@ public class FiaView extends JFrame {
 		res = new JTextField();
 		res.setBounds(10, 152, 263, 179);
 		contentPane.add(res);
-		res.setColumns(10);
+		res.setColumns(100);
 		
 		JLabel lblResultat = new JLabel("Resultat:");
 		lblResultat.setBounds(10, 125, 181, 14);
