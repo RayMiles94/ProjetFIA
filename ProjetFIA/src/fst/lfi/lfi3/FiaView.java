@@ -84,9 +84,8 @@ public class FiaView extends JFrame {
 		res.setBounds(10, 150, 660, 316);
 		contentPane.add(res);
 		
-		JScrollPane scrollPane = new JScrollPane(res);
-		scrollPane.setBounds(10,60,780,500);
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+	
+       
 	}
 	
 	public void Calculer(ActionListener cal){
