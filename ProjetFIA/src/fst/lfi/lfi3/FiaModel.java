@@ -23,7 +23,7 @@ public class FiaModel {
 	
 	public String SOLUTION(int i, int j){
 		String message="";
-		State initialState = new State (3, 3, Position.LEFT, 0, 0);
+		State initialState = new State (j, j, Position.LEFT, 0, 0);
 		AStar astar = new AStar();
 		State solution = astar.exec(initialState);
 		if (null == solution) {
