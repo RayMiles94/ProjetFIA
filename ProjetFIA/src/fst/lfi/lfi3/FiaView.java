@@ -10,6 +10,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
 import java.awt.FlowLayout;
@@ -17,6 +18,7 @@ import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -81,6 +83,10 @@ public class FiaView extends JFrame {
 		res = new JTextArea();
 		res.setBounds(10, 150, 660, 316);
 		contentPane.add(res);
+		
+		JScrollPane scrollPane = new JScrollPane(res);
+		scrollPane.setBounds(10,60,780,500);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 	}
 	
 	public void Calculer(ActionListener cal){
