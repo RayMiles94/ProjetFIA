@@ -20,16 +20,16 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
 
 public class FiaView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField number;
-	private JTextField res;
 	JButton btnNewButton;
 	private JTextField K;
 	private JLabel lblK;
-
+	JTextArea res;
 	/**
 	 * Launch the application.
 	 */
@@ -40,7 +40,7 @@ public class FiaView extends JFrame {
 	public FiaView() {
 		setTitle("Les missionnaires et les cannibales");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 593, 400);
+		setBounds(100, 100, 686, 515);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -65,11 +65,6 @@ public class FiaView extends JFrame {
 		btnNewButton.setBounds(478, 84, 89, 23);
 		contentPane.add(btnNewButton);
 		
-		res = new JTextField();
-		res.setBounds(10, 152, 567, 199);
-		contentPane.add(res);
-		res.setColumns(100);
-		
 		JLabel lblResultat = new JLabel("Resultat:");
 		lblResultat.setBounds(10, 125, 181, 14);
 		contentPane.add(lblResultat);
@@ -82,6 +77,10 @@ public class FiaView extends JFrame {
 		lblK = new JLabel("K");
 		lblK.setBounds(376, 88, 15, 14);
 		contentPane.add(lblK);
+		
+		res = new JTextArea();
+		res.setBounds(10, 150, 660, 316);
+		contentPane.add(res);
 	}
 	
 	public void Calculer(ActionListener cal){

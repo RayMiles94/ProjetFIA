@@ -27,9 +27,9 @@ public class FiaModel {
 		AStar astar = new AStar();
 		State solution = astar.exec(initialState);
 		if (null == solution) {
-			message += "\nNo solution Trouve.";
+			message += "No solution Trouve.\n";
 		} else {
-			message += "\nSolution (cannibal_gauche,missionary_gauche,boat,cannibal_droite,missionary_droite): ";
+			message += "Solution (cannibal_gauche,missionary_gauche,boat,cannibal_droite,missionary_droite): \n";
 			List<State> path = new ArrayList<State>();
 			State state = solution;
 			while(null!=state) {
