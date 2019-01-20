@@ -81,11 +81,12 @@ public class FiaView extends JFrame {
 		contentPane.add(lblK);
 		
 		res = new JTextArea();
-		res.setBounds(10, 150, 660, 316);
+		//res.setBounds(10, 150, 660, 316);
 		contentPane.add(res);
 		
-	
-       
+		JScrollPane scrolltxt=new JScrollPane(res);
+        scrolltxt.setBounds(10,150,660,300);
+        contentPane.add(scrolltxt);
 	}
 	
 	public void Calculer(ActionListener cal){
