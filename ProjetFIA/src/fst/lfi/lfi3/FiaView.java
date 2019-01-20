@@ -1,7 +1,9 @@
+/* 
+ * Projet FIA : Les missionnaires et les cannibales
+ * auteurs: jebri raouf , ben yahia haythem
+ * 
+ */
 package fst.lfi.lfi3;
-
-
-
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

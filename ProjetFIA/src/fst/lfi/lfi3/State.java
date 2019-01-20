@@ -1,3 +1,8 @@
+/* 
+ * Projet FIA : Les missionnaires et les cannibales
+ * auteurs: jebri raouf , ben yahia haythem
+ * 
+ */
 package fst.lfi.lfi3;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,26 +45,26 @@ public class State {
 		List<State> successors = new ArrayList<State>();
 		if (boat == Position.LEFT) {
 			testAndAdd(successors, new State(cannibalLeft, missionaryLeft - 2, Position.RIGHT,
-					cannibalRight, missionaryRight + 2)); // Two missionaries cross left to right.
+					cannibalRight, missionaryRight + 2)); 
 			testAndAdd(successors, new State(cannibalLeft - 2, missionaryLeft, Position.RIGHT,
-					cannibalRight + 2, missionaryRight)); // Two cannibals cross left to right.
+					cannibalRight + 2, missionaryRight)); 
 			testAndAdd(successors, new State(cannibalLeft - 1, missionaryLeft - 1, Position.RIGHT,
-					cannibalRight + 1, missionaryRight + 1)); // One missionary and one cannibal cross left to right.
+					cannibalRight + 1, missionaryRight + 1)); 
 			testAndAdd(successors, new State(cannibalLeft, missionaryLeft - 1, Position.RIGHT,
-					cannibalRight, missionaryRight + 1)); // One missionary crosses left to right.
+					cannibalRight, missionaryRight + 1)); 
 			testAndAdd(successors, new State(cannibalLeft - 1, missionaryLeft, Position.RIGHT,
-					cannibalRight + 1, missionaryRight)); // One cannibal crosses left to right.
+					cannibalRight + 1, missionaryRight)); 
 		} else {
 			testAndAdd(successors, new State(cannibalLeft, missionaryLeft + 2, Position.LEFT,
-					cannibalRight, missionaryRight - 2)); // Two missionaries cross right to left.
+					cannibalRight, missionaryRight - 2)); 
 			testAndAdd(successors, new State(cannibalLeft + 2, missionaryLeft, Position.LEFT,
-					cannibalRight - 2, missionaryRight)); // Two cannibals cross right to left.
+					cannibalRight - 2, missionaryRight)); 
 			testAndAdd(successors, new State(cannibalLeft + 1, missionaryLeft + 1, Position.LEFT,
-					cannibalRight - 1, missionaryRight - 1)); // One missionary and one cannibal cross right to left.
+					cannibalRight - 1, missionaryRight - 1)); 
 			testAndAdd(successors, new State(cannibalLeft, missionaryLeft + 1, Position.LEFT,
-					cannibalRight, missionaryRight - 1)); // One missionary crosses right to left.
+					cannibalRight, missionaryRight - 1)); 
 			testAndAdd(successors, new State(cannibalLeft + 1, missionaryLeft, Position.LEFT,
-					cannibalRight - 1, missionaryRight)); // One cannibal crosses right to left.
+					cannibalRight - 1, missionaryRight)); 
 		}
 		return successors;
 	}
