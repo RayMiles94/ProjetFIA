@@ -1,5 +1,8 @@
 package fst.lfi.lfi3;
 
+
+
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -61,7 +64,7 @@ public class FiaView extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		res = new JTextField();
-		res.setBounds(10, 152, 263, 179);
+		res.setBounds(10, 152, 567, 199);
 		contentPane.add(res);
 		res.setColumns(100);
 		

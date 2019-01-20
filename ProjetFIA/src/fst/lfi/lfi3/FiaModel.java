@@ -23,13 +23,13 @@ public class FiaModel {
 	
 	public String SOLUTION(int i, int j){
 		String message="";
-		State initialState = new State (i, j, Position.LEFT, 0, 0);
+		State initialState = new State (j, j, Position.LEFT, 0, 0);
 		AStar astar = new AStar();
 		State solution = astar.exec(initialState);
 		if (null == solution) {
-			System.out.print("\nNo solution found.");
+			message += "\nNo solution Trouve.";
 		} else {
-			System.out.println("\nSolution (cannibalLeft,missionaryLeft,boat,cannibalRight,missionaryRight): ");
+			message += "\nSolution (cannibal_gauche,missionary_gauche,boat,cannibal_droite,missionary_droite): ";
 			List<State> path = new ArrayList<State>();
 			State state = solution;
 			while(null!=state) {
@@ -41,9 +41,9 @@ public class FiaModel {
 			for (int a = depth; a >= 0; a--) {
 				state = path.get(a);
 				if (state.isGoal()) {
-					message += state.toString();
+					message += state.toString()+"\n";
 				} else {
-					message += state.toString() + " -> ";
+					message += state.toString() + " ->\n ";
 				}
 			}
 			message += "\nDepth: " + depth;
