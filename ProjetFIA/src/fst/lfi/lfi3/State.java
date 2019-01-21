@@ -19,8 +19,7 @@ public class State {
 
 	private State parentState;
 
-	public State(int cannibalLeft, int missionaryLeft, Position boat,
-			int cannibalRight, int missionaryRight) {
+	public State(int cannibalLeft, int missionaryLeft, Position boat, int cannibalRight, int missionaryRight) {
 		this.cannibalLeft = cannibalLeft;
 		this.missionaryLeft = missionaryLeft;
 		this.boat = boat;
@@ -44,27 +43,18 @@ public class State {
 	public List<State> generateSuccessors() {
 		List<State> successors = new ArrayList<State>();
 		if (boat == Position.LEFT) {
-			testAndAdd(successors, new State(cannibalLeft, missionaryLeft - 2, Position.RIGHT,
-					cannibalRight, missionaryRight + 2)); 
-			testAndAdd(successors, new State(cannibalLeft - 2, missionaryLeft, Position.RIGHT,
-					cannibalRight + 2, missionaryRight)); 
-			testAndAdd(successors, new State(cannibalLeft - 1, missionaryLeft - 1, Position.RIGHT,
-					cannibalRight + 1, missionaryRight + 1)); 
-			testAndAdd(successors, new State(cannibalLeft, missionaryLeft - 1, Position.RIGHT,
-					cannibalRight, missionaryRight + 1)); 
+			testAndAdd(successors, new State(cannibalLeft, missionaryLeft - 2, Position.RIGHT, cannibalRight, missionaryRight + 2)); 
+			testAndAdd(successors, new State(cannibalLeft - 2, missionaryLeft, Position.RIGHT, cannibalRight + 2, missionaryRight)); 
+			testAndAdd(successors, new State(cannibalLeft - 1, missionaryLeft - 1, Position.RIGHT, cannibalRight + 1, missionaryRight + 1)); 
+			testAndAdd(successors, new State(cannibalLeft, missionaryLeft - 1, Position.RIGHT, cannibalRight, missionaryRight + 1)); 
 			testAndAdd(successors, new State(cannibalLeft - 1, missionaryLeft, Position.RIGHT,
 					cannibalRight + 1, missionaryRight)); 
 		} else {
-			testAndAdd(successors, new State(cannibalLeft, missionaryLeft + 2, Position.LEFT,
-					cannibalRight, missionaryRight - 2)); 
-			testAndAdd(successors, new State(cannibalLeft + 2, missionaryLeft, Position.LEFT,
-					cannibalRight - 2, missionaryRight)); 
-			testAndAdd(successors, new State(cannibalLeft + 1, missionaryLeft + 1, Position.LEFT,
-					cannibalRight - 1, missionaryRight - 1)); 
-			testAndAdd(successors, new State(cannibalLeft, missionaryLeft + 1, Position.LEFT,
-					cannibalRight, missionaryRight - 1)); 
-			testAndAdd(successors, new State(cannibalLeft + 1, missionaryLeft, Position.LEFT,
-					cannibalRight - 1, missionaryRight)); 
+			testAndAdd(successors, new State(cannibalLeft, missionaryLeft + 2, Position.LEFT,cannibalRight, missionaryRight - 2)); 
+			testAndAdd(successors, new State(cannibalLeft + 2, missionaryLeft, Position.LEFT,cannibalRight - 2, missionaryRight)); 
+			testAndAdd(successors, new State(cannibalLeft + 1, missionaryLeft + 1, Position.LEFT,cannibalRight - 1, missionaryRight - 1)); 
+			testAndAdd(successors, new State(cannibalLeft, missionaryLeft + 1, Position.LEFT,cannibalRight, missionaryRight - 1)); 
+			testAndAdd(successors, new State(cannibalLeft + 1, missionaryLeft, Position.LEFT,cannibalRight - 1, missionaryRight)); 
 		}
 		return successors;
 	}
