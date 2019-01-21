@@ -4,7 +4,7 @@
  * 
  */
 package fst.lfi.lfi3;
-import java.util.*;
+
 class Node {
 	public State Etat;
 	public int f;
